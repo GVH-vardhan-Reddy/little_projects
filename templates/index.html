@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Textarea Example</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        textarea {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        input[type="submit"], button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        input[type="submit"]:hover, button:hover {
+            background-color: #45a049;
+        }
+        .expression {
+            font-size: 20px;
+            color: #333;
+        }
+        .result {
+            font-size: 20px;
+            color: #007BFF;
+        }
+        
+    </style>
+    <div class="container">
+        <h1>Enter your text below</h1>
+        <form method="POST">
+            <textarea name="textarea" rows="5" cols="30" placeholder="Enter infix expression..."></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        {% if expression %}
+        <h2>Your Expression:</h2>
+        <p class="expression">{{ expression }}</p>
+        {% endif %}
+        {% if fix %}
+        <h2>The value is:</h2>
+        <p class="result">{{ fix }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
